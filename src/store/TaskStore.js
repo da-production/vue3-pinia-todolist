@@ -12,29 +12,29 @@ export const useTaskStore = defineStore('taskStore',{
         c:0
     }),
     getters:{
-        allTask: (store) => store.tasks,
-        favs:(store) => store.tasks.filter(s=> s.isFav),
-        completed:(store)=> store.tasks.filter(s=> s.completed),
-        lastID(){
+        getTasks: (store) => store.tasks,
+        getFavorites:(store) => store.tasks.filter(s=> s.isFav),
+        getCompleted:(store)=> store.tasks.filter(s=> s.completed),
+        getLastID(){
             return this.tasks[this.tasks.length - 1].id + 1
         },
 
     },
     actions:{
-        all(){
+        displayAll(){
             return this.display = 'all'
         },
-        fav(){
+        displayFavorites(){
             return this.display = 'fav'
         },
-        com(){
+        displayCompleted(){
             return this.display = 'com'
         },
-        add(){
+        addTask(){
             if(this.task != null && this.task.length > 10){
                 
                 const newtask = {
-                    id: this.lastID,
+                    id: this.getLastID,
                     title: this.task,
                     isFav:false
                 }
@@ -44,13 +44,13 @@ export const useTaskStore = defineStore('taskStore',{
                 alert('task most be not null and more than 10 characters')
             }
         },
-        delete(id){
+        deleteTask(id){
             const newtasks = this.tasks.filter(t=>{
                 return t.id !== id
             })
             this.tasks=newtasks
         },
-        toggleFav(id){
+        toggleFavorite(id){
             const task = this.tasks.find(t => t.id === id);
             task.isFav = !task.isFav
         },

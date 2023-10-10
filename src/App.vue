@@ -15,9 +15,9 @@ const task = useTaskStore();
       <h2 class="font-semibold text-[35px] text-slate-600">{{ task.name }}</h2>
       <div class="container w-full">
         <div class="flex justify-center items-center">
-          <div @click="task.all" class="filter__btn rounded-tl-lg" :class="task.display == 'all' ? 'active__filter' : 'border-b-2 border-transparent' ">All ({{ task.tasks.length }})</div>
-          <div @click="task.fav" class="filter__btn " :class="task.display == 'fav' ? 'active__filter' : 'border-b-2 border-transparent' ">Favorite ({{ task.favs.length }})</div>
-          <div @click="task.com" class="filter__btn rounded-tr-lg" :class="task.display == 'com' ? 'active__filter' : 'border-b-2 border-transparent' ">Completed ({{ task.completed.length }})</div>
+          <div @click="task.displayAll" class="filter__btn rounded-tl-lg" :class="task.display == 'all' ? 'active__filter' : 'border-b-2 border-transparent' ">All ({{ task.getTasks.length }})</div>
+          <div @click="task.displayFavorites" class="filter__btn " :class="task.display == 'fav' ? 'active__filter' : 'border-b-2 border-transparent' ">Favorite ({{ task.getFavorites.length }})</div>
+          <div @click="task.displayCompleted" class="filter__btn rounded-tr-lg" :class="task.display == 'com' ? 'active__filter' : 'border-b-2 border-transparent' ">Completed ({{ task.getCompleted.length }})</div>
         </div>
       </div>
       </div>
@@ -29,21 +29,21 @@ const task = useTaskStore();
       <Transition>
         <div class="task-list w-full" v-if="task.display == 'all'">
           <p>all tasks</p>
-          <TaskDetails v-for="task in task.allTask" :task="task" :key="task.id" />
+          <TaskDetails v-for="task in task.getTasks" :task="task" :key="task.id" />
         </div>
       </Transition>
 
       <Transition>
         <div class="task-list w-full"  v-if="task.display == 'fav'">
           <p>favorite</p>
-          <TaskDetails v-for="task in task.favs" :task="task" :key="task.id" />
+          <TaskDetails v-for="task in task.getFavorites" :task="task" :key="task.id" />
         </div>
       </Transition>
 
       <Transition>
         <div class="task-list w-full"  v-if="task.display == 'com'">
           <p>Completed</p>
-          <TaskDetails v-for="task in task.completed" :task="task" :key="task.id" />
+          <TaskDetails v-for="task in task.getCompleted" :task="task" :key="task.id" />
         </div>
       </Transition>
     </div>
