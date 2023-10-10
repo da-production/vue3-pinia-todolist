@@ -2,81 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background: #f2f2f2;
-    color: #444;
-    margin: 0;
+.task-list{
+  @apply
+    items-center
+  ;
+}
+.task{
+  @apply
+    rounded-lg py-5
+  ;
 }
 
-body * {
-    font-family: "Poppins";
+.task .icons{
+  @apply
+    flex items-center justify-end
+  ;
 }
 
-/* header */
-header {
-    text-align: center;
-    background: #e7e7e7;
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.filter__btn{
+  @apply
+  px-6 py-2 bg-gray-300 cursor-pointer hover:bg-gray-400
+  transition-colors duration-150
+  ;
 }
 
-header img {
-    max-width: 60px;
-    transform: rotate(-10deg);
+.fav__active{
+  @apply
+    text-pink-700
+  ;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2em;
-    padding-top: 25px;
-    margin-left: 15px;
-    color: #777;
-    transform: rotate(2deg);
+.active__filter{
+  @apply
+    border-b-2 border-gray-800
+  ;
 }
 
-
-/* task list */
-.task-list {
-    max-width: 640px;
-    margin: 20px auto;
-  }
-  .task {
-    padding: 6px 20px;
-    background: #fff;
-    margin-top: 20px;
-    border-radius: 4px;
-    box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
-    align-items: center;
-  }
-  .task h3, .task .icons {
-    display: inline-block;
-  }
-  .task .icons {
-    text-align: right;
-  }
-  .task i {
-    font-size: 1.4em;
-    margin-left: 6px;
-    cursor: pointer;
-    color: #bbb;
-  }
-  
-  /* filter nav */
-  .filter {
-    width: 640px;
-    margin: 10px auto;
-    text-align: right;
-  }
-  .filter button {
-    display: inline-block;
-    margin-left: 10px;
-    background: #fff;
-    border: 2px solid #555;
-    border-radius: 4px;
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 0.8em;
-    font-size: 1em;
-  }
+.logo{
+  @apply
+    animate-bounce
+  ;
+}
